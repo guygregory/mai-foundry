@@ -30,6 +30,9 @@ response = requests.post(
 response.raise_for_status()
 elapsed = time.perf_counter() - start_time
 
+with open("output.txt", "w", encoding="utf-8") as f:
+    f.write(response.text)
+
 result = response.json()
 
 image_data = [
