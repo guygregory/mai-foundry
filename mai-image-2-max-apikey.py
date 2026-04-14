@@ -15,7 +15,7 @@ payload = {
     "model": deployment_name,
     "prompt": "A photorealistic image of a mountain lake at sunrise",
     "width": 1024,
-    "height": 1024,
+    "height": 768,
 }
 
 start_time = time.perf_counter()
@@ -61,7 +61,9 @@ if result.get("created"):
     created = result["created"]
     model = result.get("model", "N/A")
     size = result.get("size", "N/A")
+    output_tokens = result.get("num_output_tokens", "N/A")
     
     print(f"Created: {created}")
     print(f"Model: {model}")
     print(f"Size: {size}")
+    print(f"Output tokens: {output_tokens}")

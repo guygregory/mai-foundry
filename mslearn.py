@@ -1,9 +1,23 @@
 import os
 import requests
+from dotenv import load_dotenv
 
-endpoint = os.environ["AZURE_ENDPOINT"]
-api_key = os.environ["AZURE_API_KEY"]
-deployment_name = os.environ["DEPLOYMENT_NAME"]
+load_dotenv()
+
+
+def require_env(name: str) -> str:
+    value = os.getenv(name)
+    if not value:
+        raise SystemExit(
+            f"Missing required environment variable: {name}\n"
+            "Set it in your shell or add it to a .env file in this folder."
+        )
+    return value
+
+
+endpoint = require_env("AZURE_ENDPOINT").rstrip("/")
+api_key = require_env("AZURE_API_KEY")
+deployment_name = require_env("DEPLOYMENT_NAME")
 
 url = f"{endpoint}/mai/v1/images/generations"
 
