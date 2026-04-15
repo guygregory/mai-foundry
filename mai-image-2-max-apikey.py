@@ -15,7 +15,7 @@ payload = {
     "model": deployment_name,
     "prompt": "A photorealistic image of a mountain lake at sunrise",
     "width": 1024,
-    "height": 768,
+    "height": 1024,
 }
 
 start_time = time.perf_counter()
